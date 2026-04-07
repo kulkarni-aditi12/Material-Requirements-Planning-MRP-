@@ -76,10 +76,10 @@ cd server && npm start
 
 # frontend
 npm run dev
+---
 
 ## 🔌 API (Sample)
 
-```
 GET    /api/materials
 POST   /api/bom
 POST   /api/po
