@@ -92,5 +92,44 @@ GET    /api/dashboard/stats
 * Clean separation of frontend & backend
 * Real-world MRP workflow simulation
 
+
+## 📸 Screenshots
+
+### 🏠 Landing Page
+![Landing](screenshots/landing.png)
+
+### 🎯 Landing UI Variations
+![Landing 2](screenshots/landing2.png)
+![Landing 3](screenshots/landing3.png)
+
+### 🔐 Login Page
+![Login](screenshots/login.png)
+
+### 📊 Dashboard Overview
+![Dashboard](screenshots/dashboard.png)
+
+### 🏭 MRP Planner
+![MRP Planner](screenshots/MRPplanner.png)
+![MRP Planner 2](screenshots/MRPplanner2.png)
+
+### 📦 Bill of Materials (BOM)
+![BOM](screenshots/billOfMaterials.png)
+
+### 📋 Material Master
+![Material Master](screenshots/materialMaster.png)
+
+### 🛒 Purchase Order Management
+![Purchase Order](screenshots/PurchaseOrder.png)
+
+### 📈 Reports & Analytics
+![Reports](screenshots/Reports.png)
+![Reports 2](screenshots/Reports2.png)
+
+### 🔄 Stock Movements Tracking
+![Stock Movements](screenshots/stockMovements.png)
+
+### 🗄️ Database (MongoDB Collections)
+![MongoDB](screenshots/MongoDB.png)
+
 ## ⭐
 If you found this useful, consider starring the repo.
