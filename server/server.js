@@ -8,7 +8,6 @@ import { Server } from "socket.io";
 
 import connectDB from "./config/db.js";
 
-// Routes
 import materialRoutes from "./routes/materialRoutes.js";
 import bomRoutes from "./routes/bomRoutes.js";
 import poRoutes from "./routes/poRoutes.js";
@@ -23,11 +22,9 @@ import exportRoutes from "./routes/exportRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import productionRoutes from "./routes/productionRoutes.js";
 
-/* Fix __dirname for ES Modules */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/* Load env */
 dotenv.config({ path: path.join(__dirname, ".env") });
 
 const app = express();
@@ -36,7 +33,6 @@ app.use(express.json());
 
 connectDB();
 
-/* API routes */
 app.use("/api/materials", materialRoutes);
 app.use("/api/bom", bomRoutes);
 app.use("/api/pos", poRoutes);
@@ -55,15 +51,11 @@ app.get("/", (req, res) => {
   res.send("MRP Backend running ");
 });
 
-/* Create HTTP server */
 const server = http.createServer(app);
-
-/* Socket.IO */
 const io = new Server(server, {
   cors: { origin: "*", methods: ["GET", "POST"] },
 });
 
-/* MAKE SOCKET GLOBAL */
 global.io = io;
 
 io.on("connection", (socket) => {
@@ -74,7 +66,6 @@ io.on("connection", (socket) => {
   });
 });
 
-/* Start server */
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

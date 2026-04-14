@@ -40,3 +40,7 @@ coverage/
 # Misc
 .tmp/
 .cache/
+
+.setting/
+node_modules/
+.env

@@ -2,9 +2,6 @@ import PO from "../models/PO.js";
 import Material from "../models/Material.js";
 import StockMovement from "../models/StockMovement.js";
 
-/* =======================
-   CREATE PO
-======================= */
 export const createPO = async (req, res) => {
   try {
     const {
@@ -54,9 +51,6 @@ export const createPO = async (req, res) => {
   }
 };
 
-/* =======================
-   RECEIVE PO → Stock IN
-======================= */
 export const receivePO = async (req, res) => {
   try {
     const { poId } = req.body;
@@ -202,9 +196,7 @@ export const receivePO = async (req, res) => {
   }
 };
 
-/* =======================
-   GET all POs
-======================= */
+
 export const getAllPOs = async (req, res) => {
   try {
     const pos = await PO.find().sort({ createdAt: -1 });
@@ -214,9 +206,6 @@ export const getAllPOs = async (req, res) => {
   }
 };
 
-/* =======================
-   UPDATE PO
-======================= */
 export const updatePO = async (req, res) => {
   try {
     const updatedData = { ...req.body };

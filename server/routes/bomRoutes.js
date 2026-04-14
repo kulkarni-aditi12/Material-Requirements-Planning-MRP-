@@ -29,9 +29,6 @@ router.get("/:id", getBOMById);
 router.put("/:id", updateBOM);
 router.delete("/:id", deleteBOM);
 
-/* ======================
-   EXPORT PDF
-====================== */
 router.get("/export/pdf/:id", async (req, res) => {
   try {
     const bom = await BOM.findById(req.params.id).lean();

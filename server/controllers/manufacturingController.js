@@ -44,7 +44,6 @@ export const startProduction = async (req, res) => {
       return res.status(400).json({ message: "BOM has no items" });
     }
 
-    // First validate stock for all materials
     const stockChecks = [];
 
     for (const row of bomRows) {
@@ -75,7 +74,6 @@ export const startProduction = async (req, res) => {
       stockChecks.push({ row, material, requiredQty });
     }
 
-    // Then consume stock
     const consumedMaterials = [];
 
     for (const item of stockChecks) {

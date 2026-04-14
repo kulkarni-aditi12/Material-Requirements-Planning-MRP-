@@ -1,19 +1,16 @@
 import Material from "../models/Material.js";
 import StockMovement from "../models/StockMovement.js";
 
-/* GET all materials */
 export const getAllMaterials = async (req, res) => {
   const materials = await Material.find().sort({ name: 1 });
   res.json(materials);
 };
 
-/* ADD material */
 export const addMaterial = async (req, res) => {
   const material = await Material.create(req.body);
   res.status(201).json(material);
 };
 
-/* UPDATE material (NON-STOCK fields only) */
 export const updateMaterial = async (req, res) => {
   const { currentStock, ...safeUpdates } = req.body;
 
@@ -26,13 +23,12 @@ export const updateMaterial = async (req, res) => {
   res.json(material);
 };
 
-/* DELETE material */
+
 export const deleteMaterial = async (req, res) => {
   await Material.findByIdAndDelete(req.params.id);
   res.json({ message: "Material deleted" });
 };
 
-/* 🔥 MANUAL STOCK EDIT (PHASE-1 CORE FEATURE) */
 export const editStock = async (req, res) => {
   const { materialId, newStock, note } = req.body;
 

@@ -1,4 +1,3 @@
-// server/seedBOM.js
 import connectDB from "./config/db.js";
 import BOM from "./models/BOM.js";
 

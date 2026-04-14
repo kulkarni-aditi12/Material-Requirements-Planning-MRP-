@@ -1,10 +1,9 @@
 import express from "express";
 import Notification from "../models/Notification.js";
-import sendEmail from "../utils/sendEmail.js";
+import notify from '../utils/notify.js'
 
 const router = express.Router();
 
-// CREATE notification + send email
 router.post("/", async (req, res) => {
   try {
     const { email, message } = req.body;
@@ -23,7 +22,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET notifications for user
 router.get("/:email", async (req, res) => {
   try {
     const notifications = await Notification.find({

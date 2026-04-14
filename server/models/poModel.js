@@ -1,4 +1,3 @@
-// server/models/PO.js
 import mongoose from "mongoose";
 
 const poSchema = new mongoose.Schema({

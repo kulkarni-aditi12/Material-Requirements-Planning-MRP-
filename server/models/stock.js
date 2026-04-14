@@ -10,5 +10,4 @@ const StockSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-// Fix OverwriteModelError by checking existing model
 export default mongoose.models.Stock || mongoose.model("Stock", StockSchema);

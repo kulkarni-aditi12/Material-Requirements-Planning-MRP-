@@ -7,10 +7,6 @@ import Stock from "../models/stock.js";
 
 const router = express.Router();
 
-/**
- * GET all stock (used by dashboard)
- * GET /api/stocks
- */
 router.get("/", async (req, res) => {
   try {
     const stock = await Stock.find();
@@ -20,19 +16,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-/**
- * ✅ CREATE stock movement
- * POST /api/stocks/movement
- * THIS IS WHAT TRIGGERS:
- * - DB update
- * - socket event
- * - notifications
- */
-router.post("/movement", createStockMovement);
 
-/**
- * ❌ BLOCK direct stock overwrite
- */
+router.post("/movement", createStockMovement);
 router.put("/:id", (req, res) => {
   return res.status(403).json({
     success: false,

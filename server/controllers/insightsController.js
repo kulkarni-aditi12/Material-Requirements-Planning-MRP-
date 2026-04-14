@@ -58,7 +58,6 @@ export const getAnalyticsData = async (req, res) => {
     const materials = await Material.find();
     const mrpRuns = await MRPRun.find().sort({ createdAt: -1 }).limit(20);
 
-    // 1) Monthly Stock Movements
     const monthlyMap = {};
     for (const mv of movements) {
       const date = new Date(mv.createdAt);
@@ -71,7 +70,7 @@ export const getAnalyticsData = async (req, res) => {
     }
     const monthlyStockMovements = Object.values(monthlyMap);
 
-    // 2) PO Status Distribution
+   
     const poStatusMap = {};
     for (const po of pos) {
       const key = po.status || "unknown";
@@ -82,7 +81,6 @@ export const getAnalyticsData = async (req, res) => {
       count,
     }));
 
-    // 3) Shortage Materials from latest MRP run
     const latestMRP = await MRPRun.findOne().sort({ createdAt: -1 });
     const shortageMaterials = latestMRP
       ? latestMRP.results
@@ -93,7 +91,6 @@ export const getAnalyticsData = async (req, res) => {
           }))
       : [];
 
-    // 4) Top Costly Materials
     const topCostlyMaterials = materials
       .map((m) => ({
         materialName: m.name,
@@ -102,7 +99,6 @@ export const getAnalyticsData = async (req, res) => {
       .sort((a, b) => b.unitPrice - a.unitPrice)
       .slice(0, 5);
 
-    // 5) MRP trend summary
     const mrpHistory = mrpRuns.map((run) => ({
       productName: run.productName,
       demandQuantity: run.demandQuantity,

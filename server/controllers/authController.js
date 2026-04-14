@@ -10,7 +10,6 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid email" });
     }
 
-    // simple password check (for now)
     if (user.password !== password) {
       return res.status(401).json({ message: "Invalid password" });
     }

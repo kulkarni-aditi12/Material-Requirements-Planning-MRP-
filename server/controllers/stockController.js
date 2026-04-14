@@ -1,11 +1,6 @@
-// server/controllers/stockController.js
 import StockMovement from "../models/StockMovement.js";
 import Material from "../models/Material.js";
 
-/**
- * Create stock movement + update material stock
- * Emits real-time socket events
- */
 export async function createMovementAndUpdateMaterial({
   materialId,
   materialName,
@@ -42,7 +37,6 @@ export async function createMovementAndUpdateMaterial({
   material.currentStock = newStock;
   await material.save();
 
-  /* 🔥 REAL-TIME STOCK UPDATE */
   if (global.io) {
     global.io.emit("stockUpdated", {
       materialId: material._id.toString(),
@@ -60,7 +54,6 @@ export async function createMovementAndUpdateMaterial({
   return movement;
 }
 
-/* Fetch stock movements */
 export const getStockMovements = async (req, res) => {
   try {
     const list = await StockMovement.find()
@@ -73,7 +66,6 @@ export const getStockMovements = async (req, res) => {
   }
 };
 
-/* Create stock movement */
 export const createStockMovement = async (req, res) => {
   try {
     const movement = await createMovementAndUpdateMaterial(req.body);

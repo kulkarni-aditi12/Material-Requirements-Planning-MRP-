@@ -18,7 +18,6 @@ const BOMSchema = new mongoose.Schema({
   materials: { type: [MaterialInBOMSchema], default: [] }
 }, { timestamps: true });
 
-// Auto-calculate BOM total cost
 BOMSchema.pre("save", function(next) {
   this.totalCost = this.materials.reduce((sum, m) => sum + (m.quantity * m.unitCost), 0);
   next();
